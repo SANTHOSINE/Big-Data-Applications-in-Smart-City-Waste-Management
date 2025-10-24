@@ -1,0 +1,23 @@
+import pandas as pd
+from random import randint, choice
+from datetime import datetime, timedelta
+
+# Sample data
+locations = ["Anna Nagar", "Gandhi Market", "Srirangam", "Thillainagar", "K.K. Nagar"]
+waste_types = ["Plastic", "Organic", "Paper", "Metal"]
+
+data = []
+time = datetime(2025, 10, 23, 9, 0)
+
+for i in range(1, 51):  # 50 bins
+    bin_id = f"B{i:03d}"
+    location = choice(locations)
+    waste_level = randint(10, 100)
+    waste_type = choice(waste_types)
+    timestamp = time + timedelta(minutes=i*5)
+    data.append([bin_id, location, waste_level, waste_type, timestamp])
+
+df = pd.DataFrame(data, columns=["Bin_ID", "Location", "Waste_Level", "Waste_Type", "Timestamp"])
+df.to_csv("waste_data.csv", index=False)
+print("✅ waste_data.csv file created successfully!")
+df.head()
