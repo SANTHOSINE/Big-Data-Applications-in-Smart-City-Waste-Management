@@ -1,0 +1,5 @@
+# Pie chart for waste type distribution
+waste_type_count.plot(kind='pie', autopct='%1.1f%%', colors=['skyblue','orange','green','red'])
+plt.title("Waste Type Distribution")
+plt.ylabel("")  # remove ylabel
+plt.show()
