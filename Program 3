@@ -1,33 +1,6 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Load dataset
-df = pd.read_csv("waste_data.csv")
-
-# Average waste level per location
-avg_waste = df.groupby("Location")["Waste_Level"].mean()
-print("Average Waste Level per Location:\n", avg_waste)
-
-# Waste type count
-waste_type_count = df["Waste_Type"].value_counts()
-print("\nWaste Type Count:\n", waste_type_count)
-
-# Overflowing bins (>80%)
-overflow_bins = df[df["Waste_Level"] > 80]
-print("\nOverflowing Bins (>80% full):\n", overflow_bins)
-
-# -------------------------
-# Visualization
-
 # Bar chart for average waste level
 avg_waste.plot(kind='bar', color='skyblue')
 plt.title("Average Waste Level by Location")
 plt.xlabel("Location")
 plt.ylabel("Average Waste Level (%)")
-plt.show()
-
-# Pie chart for waste type distribution
-waste_type_count.plot(kind='pie', autopct='%1.1f%%', colors=['skyblue','orange','green','red'])
-plt.title("Waste Type Distribution")
-plt.ylabel("")  # remove ylabel
 plt.show()
